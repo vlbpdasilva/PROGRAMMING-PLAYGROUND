@@ -25,7 +25,7 @@ bool remove(int x)
 	if(numbers.at(i) == x)
 	{
             numbers.erase(numbers.begin() + i); 
-            numbersCopy.erase(numbers.begin() + i); 
+            numbersCopy.erase(numbersCopy.begin() + i); 
             return 1;
         }
     return 0;
@@ -44,8 +44,15 @@ int main()
 	
     Sort* mySorter = new Sort();
 
+    for(int l = 5; l >= 1; l--)
+    {
+        numbers.push_back(l);
+        numbersCopy.push_back(l);
+    }
+    
     do
     {
+        numbers = numbersCopy;
         menuHelper();   
         cin >> selection;
         switch(selection)
@@ -83,7 +90,8 @@ int main()
             case 5:
                 if(numbers.size() == 0) 
                     cout << "List is empty, nothing to sort." << endl;
-                else mySorter->merge(numbers);
+                else 
+                    mySorter->merge(numbers);
                 break;
             case 6:
                 cout <<"Bye bye.\n";
@@ -94,6 +102,8 @@ int main()
     }
     while(selection!=6);
 	
+    numbers.clear();
+    numbersCopy.clear();
     delete mySorter;
     return 0;
 }

@@ -13,7 +13,8 @@ class Sort
 	
     private:
     void quickHelper(vector<int> &vec, int left, int right);
-
+    void mergeHelper(vector<int> &vec);
+    void merge_vectors(std::vector<int> &vec, std::vector<int> &vec1, std::vector<int> &vec2);
 
 };
 
